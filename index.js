@@ -1,6 +1,8 @@
 const express =require("express");
 const app = express();
 const port = 3000;
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
 let library =[{
     Name:"Three idots",
     Author:"Chetan Bhagat",
@@ -24,14 +26,11 @@ app.get("/library" ,(req, res) =>{
 
 //insert
 app.post("/library" ,(req, res) => {
-    const library1=req.body;
+    var library1=req.body;
     console.log(library1) ;
     library.push(library1);
     res.send("book inserted");
 });
-
-
-
 
 //lsten port
 app.listen(port, () => console.log(`server listenng at the port ${port}`));
